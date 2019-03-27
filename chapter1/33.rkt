@@ -31,14 +31,12 @@
   (iter a null-value))
 
 
-(define (sum-prime-interval a b)
-  (define (identity x) x)
+(define (sum-squared-primes-interval a b)
+  (define (square x) (* x x))
   (define (increment x) (+ x 1))
 
   ;; prime? procedure from exercise 1.32
   (define (prime? n)
-    (define (square x)
-      (* x x))
     (define (divides? a b)
       (= (remainder b a) 0))
     (define (find-divisor n test-divisor)
@@ -49,10 +47,11 @@
       (find-divisor n 2))
     (= n (smallest-divisor n)))
 
-  (filtered-accumulate prime? + 0 identity a increment b))
+  (filtered-accumulate prime? + 0 square a increment b))
 
-(sum-prime-interval 2 100) ; => 1060
-(+ 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97) ; => 1060
+(sum-squared-primes-interval 2 10) ; => 87
+(+ 4 9 25 49) ; => 87
+
 
 
 ;;; Solution Part B
