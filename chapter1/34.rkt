@@ -26,5 +26,5 @@
 ((lambda (g) (g 2)) 2)
 (2 2)
 
-;; The interpreter attempts to evaluation (2 2), treating the
-;; primitive element 2 as a procedure call. This produces an error.
+;; The interpreter attempts to evaluate (2 2), treating the primitive
+;; element 2 as a procedure call. This produces an error.
