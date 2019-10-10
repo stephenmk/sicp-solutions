@@ -1,8 +1,9 @@
-(require sicp)
-
 ;; Exercise 1.09
 ;; Addition using a recursive procedure which generates a linear
 ;; recursive process.
+
+(define inc 1+)
+(define dec -1+)
 
 (define (+ a b)
   (if (= a 0)

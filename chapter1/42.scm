@@ -9,10 +9,9 @@ procedure that adds 1 to its argument,
 49
 |#
 
+(define inc 1+)
+
 (define (compose f g)
   (lambda (x) (f (g x))))
-
-(define (square x) (* x x))
-(define (inc x) (+ x 1))
 
 ((compose square inc) 6) ; => 49

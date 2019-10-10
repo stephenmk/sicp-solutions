@@ -17,17 +17,15 @@ calculus.
     Define `one' and `two' directly (not in terms of `zero' and
 `add-1').  (Hint: Use substitution to evaluate `(add-1 zero)').  Give
 a direct definition of the addition procedure `+' (not in terms of
-repeated application of `add-1').
+repeated application of `add-1'). |#
 
-|#
+#| Solution
 
-#| Apply the substitution model
+Apply the substitution model
 1.    (add-1 zero)
 2.    (lambda (f) (lambda (x) (f ((zero f) x))))
 3.    (lambda (f) (lambda (x) (f ((lambda (x) x) x))))
-4.    (lambda (f) (lambda (x) (f x)))
-
-|#
+4.    (lambda (f) (lambda (x) (f x))) |#
 
 (define one (lambda (f) (lambda (x) (f x))))
 
@@ -40,13 +38,13 @@ repeated application of `add-1').
 
 (define two (lambda (f) (lambda (x) (f (f x)))))
 
-;; A Church numeral of a given number `a' is a lambda which applies a
-;; function `f' to an argument `x' a number of times equal to the
-;; given number `a.'
+#| A Church numeral of a given number `a' is a lambda which applies a
+function `f' to an argument `x' a number of times equal to the given
+number `a.'
 
-;; The addition of numerals `a' and `b' should therefore apply the
-;; function `f' to argument `x' a number of times equal to `a', and
-;; then a number of times equal to `b'.
+The addition of numerals `a' and `b' should therefore apply the
+function `f' to argument `x' a number of times equal to `a', and then
+a number of times equal to `b'. |#
 
 (define (add a b)
   (lambda (f) (lambda (x) ((b f) ((a f) x)))))

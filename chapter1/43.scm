@@ -14,8 +14,7 @@ be able to be used as follows:
 ((repeated square 2) 5)
 625
 
-Hint: You may find it convenient to use compose from exercise 1.42.
-|#
+Hint: You may find it convenient to use compose from exercise 1.42. |#
 
 (define (compose f g)
   (lambda (x) (f (g x))))
@@ -27,9 +26,8 @@ Hint: You may find it convenient to use compose from exercise 1.42.
         (repeated-iter (compose f g) (+ i 1))))
   (repeated-iter f 1))
 
-(define (square x) (* x x))
 ((repeated square 2) 5) ; => 625
 
 ;; Expected to match formula x -> x + n
-(define (inc x) (+ x 1))
+(define inc 1+)
 ((repeated inc 20) 1) ; => 21

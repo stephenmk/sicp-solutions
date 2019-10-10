@@ -10,10 +10,10 @@ returned by
 
 |#
 
-(require sicp)
-
 (define (double f)
   (lambda (x) (f (f x))))
+
+(define inc 1+)
 
 ((double inc) 5) ; => 7
 
@@ -24,14 +24,14 @@ returned by
 
 ((quadruple inc) 5) ; => 9
 
-;; For "double quadruple," we apply the quadruple procedure to itself
-;; twice. The first application of quadruple produces four
-;; applications of the function argument. With the second application
-;; of quadruple, these four function arguments are again quadrupled to
-;; produce 16 applications total.
+#| For "double quadruple," we apply the quadruple procedure to itself
+twice. The first application of quadruple produces four applications
+of the function argument. With the second application of quadruple,
+these four function arguments are again quadrupled to produce 16
+applications total.
 
-;; The name for the 16-tuple is
-;; sexdecuple. (https://en.wikipedia.org/wiki/Tuple)
+The name for the 16-tuple is
+sexdecuple. (https://en.wikipedia.org/wiki/Tuple) |#
 
 (define (sexdecuple f)
   (lambda (x) (((double quadruple) f) x)))

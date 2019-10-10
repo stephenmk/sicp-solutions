@@ -1,30 +1,34 @@
-(require sicp)
+#| Exercise 1.20.
 
-;;; Exercise 1.20.
-;; The process that a procedure generates is of course dependent on
-;; the rules used by the interpreter. As an example, consider the
-;; iterative gcd procedure given above
+The process that a procedure generates is of course dependent on the
+rules used by the interpreter. As an example, consider the iterative
+gcd procedure given above
 
 (define (gcd a b)
   (if (= b 0)
       a
       (gcd b (remainder a b))))
 
-;; Suppose we were to interpret this procedure using normal-order
-;; evaluation, as discussed in section 1.1.5. (The
-;; normal-order-evaluation rule for if is described in exercise 1.5.)
-;; Using the substitution method (for normal order), illustrate the
-;; process generated in evaluating (gcd 206 40) and indicate the
-;; remainder operations that are actually performed. How many
-;; remainder operations are actually performed in the normal-order
-;; evaluation of (gcd 206 40)? In the applicative-order evaluation?
+Suppose we were to interpret this procedure using normal-order
+evaluation, as discussed in section 1.1.5. (The
+normal-order-evaluation rule for if is described in exercise 1.5.)
+Using the substitution method (for normal order), illustrate the
+process generated in evaluating (gcd 206 40) and indicate the
+remainder operations that are actually performed. How many remainder
+operations are actually performed in the normal-order evaluation
+of (gcd 206 40)? In the applicative-order evaluation?
 
-;;; Solution
-;; Applicative order evaluation requires much fewer evaluations of the
-;; remainder procedure. They both take the same number of steps, but
-;; normal order also requires many deferred operations to remember.
+|#
 
-;;; Applicative order evaluation
+#| Solution
+
+Applicative order evaluation requires much fewer evaluations of the
+remainder procedure. They both take the same number of steps, but
+normal order also requires many deferred operations to remember.
+
+|#
+
+;; Applicative order evaluation
 (gcd 206 40)
 (gcd 40 (remainder 206 40))
 (gcd 40 6) ; 1st evaluation
@@ -36,7 +40,7 @@
 (gcd 2 0) ; 4th evaluation
 2
 
-;;; Normal-order evaluation
+;; Normal-order evaluation
 (gcd 206 40)
 (gcd 40 (remainder 206 40))
 

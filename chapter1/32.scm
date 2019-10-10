@@ -1,32 +1,32 @@
-(require sicp)
+#| Exercise 1.32.
 
-;;; Exercise 1.32.
-;; a. Show that sum and product (exercise 1.31) are both special cases
-;; of a still more general notion called accumulate that combines a
-;; collection of terms, using some general accumulation function:
+a. Show that sum and product (exercise 1.31) are both special cases of
+a still more general notion called accumulate that combines a
+collection of terms, using some general accumulation function:
 
 (accumulate combiner null-value term a next b)
 
-;; Accumulate takes as arguments the same term and range
-;; specifications as sum and product, together with a combiner
-;; procedure (of two arguments) that specifies how the current term is
-;; to be combined with the accumulation of the preceding terms and a
-;; null-value that specifies what base value to use when the terms run
-;; out. Write accumulate and show how sum and product can both be
-;; defined as simple calls to accumulate.
+Accumulate takes as arguments the same term and range specifications
+as sum and product, together with a combiner procedure (of two
+arguments) that specifies how the current term is to be combined with
+the accumulation of the preceding terms and a null-value that
+specifies what base value to use when the terms run out. Write
+accumulate and show how sum and product can both be defined as simple
+calls to accumulate.
 
-;; b. If your accumulate procedure generates a recursive process,
-;; write one that generates an iterative process. If it generates an
-;; iterative process, write one that generates a recursive process.
+b. If your accumulate procedure generates a recursive process, write
+one that generates an iterative process. If it generates an iterative
+process, write one that generates a recursive process. |#
 
 
-;;; Solution
-;; The last exercise demonstrated how to transform the book's "sum"
-;; procedure into a "product" procedure.  The operator (combiner) was
-;; changed from + to *, and the identity term (null-value) was changed
-;; from 0 to 1.  The accumulate procedures thus only need to adapt the
-;; previously used sum and product procedures and accept the combiner
-;; and null-value definitions as parameters.
+#| Solution
+
+The last exercise demonstrated how to transform the book's "sum"
+procedure into a "product" procedure.  The operator (combiner) was
+changed from + to *, and the identity term (null-value) was changed
+from 0 to 1.  The accumulate procedures thus only need to adapt the
+previously used sum and product procedures and accept the combiner and
+null-value definitions as parameters. |#
 
 ;; Iterative accumulate procedure
 (define (accumulate combiner null-value term a next b)

@@ -7,7 +7,6 @@ Define a procedure "cubic" that can be used together with the
 
 to approximate zeros of the cubic x^3 + ax^2 + bx + c. |#
 
-(require sicp)
 
 ;; fixed-point definition from book
 (define (fixed-point f first-guess)

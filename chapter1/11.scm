@@ -1,5 +1,3 @@
-(require sicp)
-
 ;; Exercise 1.11
 ;; A function f is defined by the rule that f(n) = n if n < 3 and
 ;; f(n) = f(n-1) + 2f(n-2) + 3f(n-3) if n >= 3. Write a procedure
