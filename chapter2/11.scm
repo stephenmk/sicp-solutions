@@ -65,7 +65,7 @@ The nine cases are displayed in the following table.
 
 (define a (make-interval 2 3))
 (define b (make-interval -5 7))
-(define c (make-interval 11 -13))
+(define c (make-interval -13 11))
 (define d (make-interval -17 -19))
 
 (define (test-mul-intervals x y)
