@@ -31,7 +31,7 @@ design of iterative algorithms.)
 
 The general idea is that any exponent can be broken-down into its
 base-2 representation. For example, 37 = 32 + 4 + 1.
-And so b^34= (b^32)(b^4)(b^1).
+And so b^37= (b^32)(b^4)(b^1).
 
 The strategy for designing this procedure is therefore
 to keep computing the squares until the exponent value is
