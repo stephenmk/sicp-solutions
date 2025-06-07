@@ -69,10 +69,9 @@ available as primitives. |#
 ;; dampings is insufficient for convergence.
 
 (define (nth-root-tester x n dampings)
-  (define (next-damper n)
-    (repeated average-damp dampings))
-  (let ((x-to-the-n (expt x n)))
-    (fixed-point ((next-damper n) (lambda (y) (/ x-to-the-n (expt y (- n 1)))))
+  (let ((x-to-the-n (expt x n))
+        (damper (repeated average-damp dampings)))
+    (fixed-point (damper (lambda (y) (/ x-to-the-n (expt y (- n 1)))))
                  1.0)))
 
 (nth-root-tester 451 2 1) ; Value: 451.
@@ -121,10 +120,9 @@ base 2. [log_2(x) = log(x) / log(2)] |#
 
 (define (nth-root x n)
   (let ((dampings (floor (/ (log n) (log 2)))))
-    (define (next-damper n)
-      (repeated average-damp dampings))
-    (fixed-point ((next-damper n) (lambda (y) (/ x (expt y (- n 1)))))
-                 1.0)))
+    (let ((damper (repeated average-damp dampings)))
+      (fixed-point (damper (lambda (y) (/ x (expt y (- n 1)))))
+                   1.0))))
 
 (nth-root 27 3)              ; Value: 2.9999972321057697
 (nth-root (expt 451 64) 64)  ; Value: 451.
