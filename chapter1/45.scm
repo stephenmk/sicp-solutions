@@ -112,7 +112,7 @@ increases by one at every power of 2, i.e. the 8th root, 16th root,
 32nd root, 64th root, etc.
 
 In other words, the required number of average dampings increases with
-the logarithm of 2.
+the base-2 logarithm of n.
 
 Since MIT-Scheme only includes the natural log (base e) as a
 primitive, I'll need to use the change-of-base formula to compute log
