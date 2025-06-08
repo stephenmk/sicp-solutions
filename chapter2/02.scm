@@ -46,8 +46,8 @@ a way to print points:
         (start-y (y-point (start-segment s)))
         (end-x (x-point (end-segment s)))
         (end-y (y-point (end-segment s))))
-    (make-segment (/ (+ start-x end-x) 2.0)
-                  (/ (+ start-y end-y) 2.0))))
+    (make-point (/ (+ start-x end-x) 2.0)
+                (/ (+ start-y end-y) 2.0))))
 
 (define (print-point p)
   (newline)
