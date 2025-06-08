@@ -16,20 +16,19 @@ always be factored back into 2s and 3s. The number of factors gives us
   (* (expt 2 a)
      (expt 3 b)))
 
+(define (count-factors integer factor)
+  (define (remove-factor z count)
+    (if (= (remainder z factor) 0)
+        (remove-factor (/ z factor) (+ count 1))
+        count))
+  (remove-factor integer 0))
+
 (define (my-car x)
-  (define (remove-factor z a)
-    (if (= (remainder z 2) 0)
-        (remove-factor (/ z 2) (+ a 1))
-        a ))
-  (remove-factor x 0))
+  (count-factors x 2))
 
 (my-car (my-cons 7 9)) ; => 7
 
 (define (my-cdr x)
-  (define (remove-factor z b)
-    (if (= (remainder z 3) 0)
-        (remove-factor (/ z 3) (+ b 1))
-        b ))
-  (remove-factor x 0))
+  (count-factors x 3))
 
 (my-cdr (my-cons 7 9)) ; => 9
