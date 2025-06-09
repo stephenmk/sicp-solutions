@@ -24,7 +24,7 @@ a list of the same elements in reverse order:
   (define (reverse-iter x r)
     (if (null? x)
         r
-        (reverse-iter (cdr x) (append (list (car x)) r))))
+        (reverse-iter (cdr x) (cons (car x) r))))
   (reverse-iter x '()))
 
 (reverse (list 1 4 9 16 25))
