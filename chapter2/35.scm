@@ -37,3 +37,18 @@ Redefine `count-leaves' from section 2.2.2 as an accumulation:
   (accumulate + 0 (map op t)))
 
 (count-leaves test-list)  ;Value: 8
+
+
+;; The remarkable feature of this implementation in comparison to the
+;; original procedure is that the accumulation method does not
+;; explicitly use car or cdr. Descent into the tree is handled by the
+;; recursive calls to the map procedure.
+;;
+;; So actually the check for null elements is completely unnecessary.
+
+(define (count-leaves t)
+  (define (op x)
+    (if (pair? x) (count-leaves x) 1))
+  (accumulate + 0 (map op t)))
+
+(count-leaves test-list)  ;Value: 8
