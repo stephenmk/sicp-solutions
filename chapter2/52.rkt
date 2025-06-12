@@ -108,7 +108,7 @@ working at each of the levels described above. In particular:
 (paint (corner-split wave-painter 4))
 (display "New corner-split pattern with one copy in each direction instead of two")
 (newline)
-(paint (modified-corner-split wave-painter 2))
+(paint (modified-corner-split wave-painter 4))
 
 ;;; Solution (c)
 
@@ -119,20 +119,21 @@ working at each of the levels described above. In particular:
           (bottom (beside (bl painter) (br painter))))
       (below bottom top))))
 
-(paint ((square-of-four flip-horiz identity rotate180 flip-vert) einstein))
-(paint ((square-of-four identity flip-horiz flip-vert rotate180) einstein))
-
-
 (define (square-limit painter n)
   (let ((combine4 (square-of-four flip-horiz identity
                                   rotate180 flip-vert)))
     (combine4 (corner-split painter n))))
 
+(display "Original square-limit einstein (facing outward)")
+(newline)
 (paint (square-limit einstein 4))
+
 
 (define (modified-square-limit painter n)
   (let ((combine4 (square-of-four flip-horiz identity
                                   rotate180 flip-vert)))
     (combine4 (corner-split (flip-horiz painter) n))))
 
+(display "New square-limit einstein (facing inward)")
+(newline)
 (paint (modified-square-limit einstein 4))
