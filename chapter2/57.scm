@@ -106,10 +106,10 @@ be the sum of the rest of the terms. |#
 (make-product 'a 'b 'c 'd)    ;Value: (* (* a b) (* c d))
 (make-product 'a 'b 'c 'd 'e) ;Value: (* (* a b) (* (* c d) e))
 
-(multiplier   (make-sum 'x 'y)) ;Value: x
-(multiplicand (make-sum 'x 'y)) ;Value: y
+(multiplier   (make-product 'x 'y)) ;Value: x
+(multiplicand (make-product 'x 'y)) ;Value: y
 
-(multiplier   (make-sum 'x 'y 'z)) ;Value: (+ x y)
-(multiplicand (make-sum 'x 'y 'z)) ;Value: z
+(multiplier   (make-product 'x 'y 'z)) ;Value: (* x y)
+(multiplicand (make-product 'x 'y 'z)) ;Value: z
 
 (deriv '(* x y (+ x 3)) 'x) ;Value: (+ (* x y) (* y (+ x 3)))
