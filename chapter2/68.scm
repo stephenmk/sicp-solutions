@@ -17,20 +17,24 @@ the result you obtained in Exercise 2.67 with the sample tree and
 seeing whether it is the same as the original sample message. |#
 
 ;;; Solution
+(define (element-of-symbols? symbol tree)
+  (memq symbol (symbols tree)))
+
 (define (encode-symbol symbol tree)
   (define (encode-1 bits current-branch)
-    (cond ((leaf? current-branch)
-           (if (eq? symbol (symbol-leaf current-branch))
-               bits
-               (error "bad symbol: ENCODE-SYMBOL" symbol)))
-          ((memq symbol (symbols (left-branch current-branch)))
+    (cond ((leaf? current-branch) bits)
+          ((element-of-symbols? symbol (left-branch current-branch))
            (encode-1 (append bits '(0))
                      (left-branch current-branch)))
-          ((memq symbol (symbols (right-branch current-branch)))
+          ((element-of-symbols? symbol (right-branch current-branch))
            (encode-1 (append bits '(1))
                      (right-branch current-branch)))
-          (else (error "bad symbol: ENCODE-SYMBOL" symbol))))
-  (encode-1 '() tree))
+          (else (error "bad symbol: ENCODE-1" symbol))))
+  (cond ((leaf? tree)
+         (error "bad tree: ENCODE-SYMBOL" tree))
+        ((not (element-of-symbols? symbol tree))
+         (error "bad symbol: ENCODE-SYMBOL" symbol))
+        (else (encode-1 '() tree))))
 
 ;; Leaf selectors
 (define (leaf? object) (eq? (car object) 'leaf))
